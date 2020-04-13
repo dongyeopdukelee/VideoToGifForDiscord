@@ -1,7 +1,9 @@
 
 # VideoToGifForDiscord
 
-VideoToGifForDiscord is a Python app that takes a monitors a discord channel, triggers when finds a video link, makes a short snippet gif through Gfycat, and uploads it to the same channel. This was a weekend project so it's pretty rough around the edges, but I had fun.
+VideoToGifForDiscord is a Python app that takes a monitors a discord channel, triggers when finds a video link, makes a short snippet gif through Gfycat, and uploads it to the same channel. 
+
+This was a weekend project so it's pretty rough around the edges, but I had fun.
 
 ## Usage
 
