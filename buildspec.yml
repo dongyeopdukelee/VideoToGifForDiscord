@@ -1,0 +1,13 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.6
+  pre_build:
+    commands:
+      - python3 -m venv test_venv
+      - . test_venv/bin/activate
+      - pip install --upgrade pip
+      - pip install -r tests/requirements.txt
+      - pip install .
