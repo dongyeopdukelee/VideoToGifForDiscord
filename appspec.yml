@@ -3,3 +3,6 @@ os: linux
 files:
   - source: discordgifbot
     destination: /discordgifbot
+hooks:
+  AfterInstall:
+    - source: discordgifbot/start.sh
