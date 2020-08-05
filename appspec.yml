@@ -1,11 +1,5 @@
 version: 0.0
 os: linux
 files:
-  - source: ./discordgifbot/
-    destination: /tmp
-hooks:
-  AfterInstall:
-    - location: ./discordgifbot/start.sh
-      timeout: 300
-      runas: root
-
+  - source: discordgifbot
+    destination: /discordgifbot
