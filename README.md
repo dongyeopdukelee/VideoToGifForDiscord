@@ -20,7 +20,7 @@ Request for your personal tokens.
 - Gfycat: https://developers.gfycat.com/
 - Discord: https://discordapp.com/developers/applications
 
-Update src/configuration.json to include your personal tokens.
+Set personal tokens as environment variables.
 
 Run the code. Invite your bot to your channels. I used this guide if you're completely new like I was: https://youtu.be/nW8c7vT6Hl4
 

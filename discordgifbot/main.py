@@ -4,6 +4,7 @@ import logging
 import sys
 import time
 import urllib
+import os
 
 import discord  # discord.py
 import requests
@@ -15,12 +16,6 @@ GFYCAT_GET_TOKEN = "https://api.gfycat.com/v1/oauth/token/"
 logging.basicConfig(stream=sys.stdout)
 log = logging.getLogger(__name__)
 log.setLevel(logging.INFO)
-
-with open("credentials.json") as credentialsFile:
-    credentials = json.load(credentialsFile)
-    discord_token = credentials["discord_token"]
-    gfycat_id = credentials["gfycat_id"]
-    gfycat_secret = credentials["gfycat_secret"]
 
 with open("supported_websites.json") as f:
     supported_websites = json.load(f)
@@ -70,6 +65,13 @@ class MyClient(discord.Client):
     gfycat_grant = ""
     start_time = 0
     end_time = 0
+    gfycat_id = ""
+    gfycat_password = ""
+
+    def __init__(self, gfycat_id, gfycat_password):
+        self.gfycat_id = gfycat_id
+        self.gfycat_password = gfycat_password
+        super().__init__()
 
     async def on_ready(self):
         log.info("Logged in as self {0}.".format(self.user))
@@ -174,8 +176,8 @@ class MyClient(discord.Client):
             try:
                 data = {
                     "grant_type": "client_credentials",
-                    "client_id": gfycat_id,
-                    "client_secret": gfycat_secret,
+                    "client_id": self.gfycat_id,
+                    "client_secret": self.gfycat_secret,
                 }
                 req = requests.post(GFYCAT_GET_TOKEN, data=json.dumps(data))
                 if req.status_code == 200:
@@ -210,6 +212,13 @@ class CriticalError(Exception):
     pass
 
 
-client = MyClient()
+def main(discord_token, gfycat_id, gfycat_secret):
+    print("main start")
+    client = MyClient(gfycat_id, gfycat_secret)
+    client.run(discord_token)
 
-client.run(discord_token)
+
+if __name__ == '__main__':
+    main(os.environ.get('DISCORD_TOKEN'),
+         os.environ.get('GFYCAT_ID'),
+         os.environ.get('GFYCAT_SECRET'))
