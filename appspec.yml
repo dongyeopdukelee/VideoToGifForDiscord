@@ -4,5 +4,5 @@ files:
   - source: discordgifbot
     destination: /discordgifbot
 hooks:
-  AfterInstall:
+  ApplicationStart:
     - source: discordgifbot/start.sh
