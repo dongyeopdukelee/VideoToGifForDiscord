@@ -5,4 +5,4 @@ files:
     destination: /discordgifbot
 hooks:
   ApplicationStart:
-    - source: discordgifbot/start.sh
+    - location: discordgifbot/start.sh
